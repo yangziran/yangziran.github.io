@@ -81,7 +81,17 @@
     
 
     <div class="nav-footer">
-        &copy; 2020 <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+        &copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+<script>
+	const createYear = 2020;
+	var now = new Date();
+	var nowYear = now.getFullYear();
+	var dates = createYear;
+	if (createYear !== nowYear && nowYear > createYear) {
+		dates += " - " + nowYear;
+	}
+	document.getElementById('dates').textContent = dates;
+</script>
     </div>
     
 </div><div ref="extraContainer" class="extra-container">
@@ -176,7 +186,17 @@
             </div>
 
 
-<div id="single-column-footer">&copy; 2020 <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.</div>
+<div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+<script>
+	const createYear = 2020;
+	var now = new Date();
+	var nowYear = now.getFullYear();
+	var dates = createYear;
+	if (createYear !== nowYear && nowYear > createYear) {
+		dates += " - " + nowYear;
+	}
+	document.getElementById('dates').textContent = dates;
+</script></div>
     	</div>
     <script src="https://yangziran.github.io//js/journal.js"></script>
     </body>
