@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html><head>
+<title>CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar</title>
+
+<meta charset="utf-8">
+<meta name="X-UA-Compatible" content="IE=edge">
+<meta name="google-site-verification" content="">
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<meta content="telephone=no" name="format-detection">
+<meta name="renderer" content="webkit">
+<meta name="theme-color" content="#ffffff">
+
+
+
+
+<script src="/vendor/js/jquery.min.js" ></script>
+<script src="/vendor/js/popper.min.js" ></script>
+<script src="/vendor/js/bootstrap.min.js" ></script>
+<script src="/vendor/js/smooth-scroll.polyfills.min.js" ></script>
+<link type="text/css" rel="stylesheet" href="/vendor/css/bootstrap.min.css">
+<script src="/vendor/js/vue.min.js" ></script>
+
+
+
+
+<link rel="stylesheet" href="https://yangziran.com/scss/journal.min.f9aa2ef90b19ac8d29363dbd51d4350621537cb3340dd7c6bacf18e3c426f4d5.css" integrity="sha256-&#43;aou&#43;QsZrI0pNj29UdQ1BiFTfLM0DdfGus8Y48Qm9NU=" media="screen">
+
+<script src="https://yangziran.com//js/loadCSS.js"></script>
+<script src="https://yangziran.com//js/table.js"></script>
+
+
+<script src="https://yangziran.com//js/toc.js"></script>
+
+
+<script>
+    loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/vendor/js/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'your client id',
+  clientSecret: 'your client secret',
+  repo: 'repo name',
+  owner: 'user',
+  admin: ['user'],
+  id: md5(location.pathname),
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
+</script>
+
+
+
+
+
+
+</head><body>
+    	<div id="app"><div ref="sideContainer" class="side-container">
+    
+    <a class="a-block nav-head false" href="https://yangziran.com/">
+    
+        <div class="nav-title">
+            Nature
+        </div>
+        
+    </a>
+
+    <div class="nav-link-list">
+        
+        
+            
+                
+                
+                    
+                
+                <a class="a-block nav-link-item active" href="/posts">
+                    Archive
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/categories">
+                    Categories
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="/tags">
+                    Tags
+                </a>
+        
+            
+                
+                
+                <a class="a-block nav-link-item false" href="https://yangziran.com/favorites">
+                    Favorites
+                </a>
+        
+    </div>
+
+    
+
+    <div class="nav-footer">
+        &copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+<script>
+	var createYear = 2020;
+	var now = new Date();
+	var nowYear = now.getFullYear();
+	var dates = createYear;
+	if (createYear !== nowYear && nowYear > createYear) {
+		dates += " - " + nowYear;
+	}
+	document.getElementById('dates').textContent = dates;
+</script>
+    </div>
+    
+</div><div ref="extraContainer" class="extra-container">
+    
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#1%e5%8d%b8%e8%bd%bd%e7%b3%bb%e7%bb%9f%e8%87%aa%e5%b8%a6%e7%9a%84mariadb-lib" v-on:click="closeDrawer" id="1卸载系统自带的mariadb-lib-nav">
+										 1、卸载系统自带的mariadb-lib
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#2%e4%b8%8b%e8%bd%bdmysql-5728-rpm-bundletar%e5%8c%85%e5%b9%b6%e8%a7%a3%e5%8e%8b" v-on:click="closeDrawer" id="2下载mysql-5728-rpm-bundletar包并解压-nav">
+										 2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#3%e5%ae%89%e8%a3%85" v-on:click="closeDrawer" id="3安装-nav">
+										 3、安装
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#4%e8%bf%90%e8%a1%8c%e5%b9%b6%e6%b7%bb%e5%8a%a0%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8" v-on:click="closeDrawer" id="4运行并添加开机启动-nav">
+										 4、运行并添加开机启动
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#5%e7%99%bb%e5%bd%95%e5%b9%b6%e4%bf%ae%e6%94%b9%e5%af%86%e7%a0%81" v-on:click="closeDrawer" id="5登录并修改密码-nav">
+										 5、登录并修改密码
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#6%e9%98%b2%e7%81%ab%e5%a2%99%e9%85%8d%e7%bd%ae%e8%bf%9c%e7%a8%8b%e8%ae%bf%e9%97%ae" v-on:click="closeDrawer" id="6防火墙配置远程访问-nav">
+										 6、防火墙配置远程访问
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e9%94%99%e8%af%af%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" v-on:click="closeDrawer" id="错误及解决方法-nav">
+										 错误及解决方法
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+    
+    <div class="pagination">
+        <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
+            <i class="material-icons pagination-action-icon">
+                keyboard_arrow_up
+            </i>
+        </a>
+        
+    </div>
+</div><div class="single-column-drawer-container" ref="drawer"
+     v-bind:class="{ 'single-column-drawer-container-active': isDrawerOpen }">
+    <div class="drawer-content">
+        <div class="drawer-menu">
+            
+            
+                
+                    
+                    
+                        
+                    
+                    <a class="a-block drawer-menu-item active" href="/posts">
+                        Archive
+                    </a>
+            
+                
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="/categories">
+                        Categories
+                    </a>
+            
+                
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="/tags">
+                        Tags
+                    </a>
+            
+                
+                    
+                    
+                    <a class="a-block drawer-menu-item false" href="https://yangziran.com/favorites">
+                        Favorites
+                    </a>
+            
+            
+            <div class="toc">
+
+
+	<div class="toc-content">
+	
+		
+		
+		
+		<center>- CATALOG -</center>
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#1%e5%8d%b8%e8%bd%bd%e7%b3%bb%e7%bb%9f%e8%87%aa%e5%b8%a6%e7%9a%84mariadb-lib" v-on:click="closeDrawer" id="1卸载系统自带的mariadb-lib-nav">
+										 1、卸载系统自带的mariadb-lib
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#2%e4%b8%8b%e8%bd%bdmysql-5728-rpm-bundletar%e5%8c%85%e5%b9%b6%e8%a7%a3%e5%8e%8b" v-on:click="closeDrawer" id="2下载mysql-5728-rpm-bundletar包并解压-nav">
+										 2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#3%e5%ae%89%e8%a3%85" v-on:click="closeDrawer" id="3安装-nav">
+										 3、安装
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#4%e8%bf%90%e8%a1%8c%e5%b9%b6%e6%b7%bb%e5%8a%a0%e5%bc%80%e6%9c%ba%e5%90%af%e5%8a%a8" v-on:click="closeDrawer" id="4运行并添加开机启动-nav">
+										 4、运行并添加开机启动
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#5%e7%99%bb%e5%bd%95%e5%b9%b6%e4%bf%ae%e6%94%b9%e5%af%86%e7%a0%81" v-on:click="closeDrawer" id="5登录并修改密码-nav">
+										 5、登录并修改密码
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#6%e9%98%b2%e7%81%ab%e5%a2%99%e9%85%8d%e7%bd%ae%e8%bf%9c%e7%a8%8b%e8%ae%bf%e9%97%ae" v-on:click="closeDrawer" id="6防火墙配置远程访问-nav">
+										 6、防火墙配置远程访问
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+				
+				
+					
+						
+						
+							<ul>
+						
+							<ul>
+						
+							<ul>
+						
+						
+								<li>
+				 					<a href="#%e9%94%99%e8%af%af%e5%8f%8a%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" v-on:click="closeDrawer" id="错误及解决方法-nav">
+										 错误及解决方法
+									</a>
+								</li>
+						
+							</ul>
+						
+							</ul>
+						
+							</ul>
+						
+					
+				
+			
+	</div>
+
+</div>
+            
+        </div>
+    </div>
+</div>
+<transition name="fade">
+    <div v-bind:class="{ 'single-column-drawer-mask': mounted }" v-if="isDrawerOpen" v-on:click="toggleDrawer"></div>
+</transition>
+<nav ref="navBar" class="navbar sticky-top navbar-light single-column-nav-container">
+    <div ref="navBackground" class="nav-background"></div>
+    <div class="container container-narrow nav-content">
+        <button id="nav_dropdown_btn" class="nav-dropdown-toggle" type="button" v-on:click="toggleDrawer">
+            <i class="material-icons">
+                menu
+            </i>
+        </button>
+        <a ref="navTitle" class="navbar-brand" href="https://yangziran.com/">
+            Nature
+        </a>
+    </div>
+</nav>
+<div class="single-column-header-container" ref="pageHead"
+     v-bind:style="{ transform: 'translateZ(0px) translateY('+.3*scrollY+'px)', opacity: 1-navOpacity }">
+    <a href="https://yangziran.com/">
+        <div class="single-column-header-title">Nature</div>
+        
+
+    </a>
+</div>
+            <div id="content">
+<div ref="streamContainer" class="stream-container">
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('/')">
+                
+                <img src="https://yangziran.com/" style="display: none;"></img>
+                <div class="post-title">
+                    CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2020-03-15 01:47
+                        </time>
+                        
+
+                        
+                            <i class="material-icons" style="">folder</i>
+                                <a href="/categories/">[MySQL]</a>
+                                &nbsp;
+                        
+
+                        
+                            <i class="material-icons" style="">label</i>
+                            
+                                <a href="/tags/mysql">MySQL</a>
+                                &nbsp;
+                            
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <h3 id="1卸载系统自带的mariadb-lib">1、卸载系统自带的mariadb-lib</h3>
+<pre><code># rpm -qa|grep mariadb
+// mariadb-libs-5.5.64-1.el7.x86_64
+# rpm -e mariadb-libs-5.5.64-1.el7.x86_64 —nodeps
+</code></pre>
+<h3 id="2下载mysql-5728-rpm-bundletar包并解压">2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压</h3>
+<pre><code># tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar
+</code></pre>
+<h3 id="3安装">3、安装</h3>
+<pre><code>依次执行（几个包有依赖关系，需要按顺序）下面命令安装
+# rpm -ivh mysql-community-common-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-libs-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-client-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-server-5.7.28-1.el7.x86_64.rpm
+</code></pre>
+<h3 id="4运行并添加开机启动">4、运行并添加开机启动</h3>
+<pre><code># systemctl enable mysqld // 添加开机启动
+# systemctl start mysqld // 启动MySQL服务
+</code></pre>
+<h3 id="5登录并修改密码">5、登录并修改密码</h3>
+<pre><code>在上一步启动MySQL服务的时候，会初始化MySQL并为root用户生成默认密码并将该密码标记为过期，登录后需要设置一个新的密码。
+# cat /var/log/mysqld.log // 查看MySQL日志，搜索到：A temporary password is generated for root@localhost 后面就是生成的默认密码
+# mysql -uroot -p // 用root用户登录MySQL
+mysql&gt; alter user ‘root’@‘localhost’ identified by ‘新密码’; // 密码要求：长度最少8位，大小写和特殊字符组成
+mysql&gt; create user ‘新用户’ identified by ‘新密码’; // 创建远程登录用户
+mysql&gt; grant all on *.* to 新用户; // 赋予新用户所有数据库的所有权限
+mysql&gt; flush privileges; // 刷新系统权限表
+</code></pre>
+<h3 id="6防火墙配置远程访问">6、防火墙配置远程访问</h3>
+<pre><code># firewall-cmd —permanent —zone=public —add-service=mysql // 永久开放mysql服务
+# firewall-cmd —reload // 重新加载防火墙
+</code></pre>
+<p><strong>注意：新版的mysql数据库下的user表中已经没有password字段了，而是将加密后的用户密码存储于authentication_string字段。</strong></p>
+<h3 id="错误及解决方法">错误及解决方法</h3>
+<pre><code>error：Failed dependencies:
+    /usr/bin/perl is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    net-tools is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    perl(Getopt::Long) is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    perl(strict) is needed by mysql-community-server-5.7.28-1.el7.x86_64
+
+解决方法：
+    # yum install perl
+    # yum install net-tools</code></pre>
+
+                    
+                    <HR width="100%" id="EOF">
+                    <p style="color:#777;">Last modified on 2020-03-15</p>
+                    
+                </div>
+            </div>
+            
+            
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+                    Next<br>No newer posts.
+                </a>
+                
+                
+                
+                <a class="older-posts">
+                    Previous<br>No older posts.
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+<div id="gitalk-container"></div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+            </div><div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+<script>
+	var createYear = 2020;
+	var now = new Date();
+	var nowYear = now.getFullYear();
+	var dates = createYear;
+	if (createYear !== nowYear && nowYear > createYear) {
+		dates += " - " + nowYear;
+	}
+	document.getElementById('dates').textContent = dates;
+</script></div>
+    	</div>
+    <script src="https://yangziran.com//js/journal.js"></script>
+    </body>
+</html>

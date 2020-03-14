@@ -5,8 +5,63 @@
     <description>Recent content on Nature</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
+    <lastBuildDate>Sun, 15 Mar 2020 01:47:59 +0800</lastBuildDate>
     
         <atom:link href="https://yangziran.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar</title>
+        <link>https://yangziran.com/posts/1584208079/</link>
+        <pubDate>Sun, 15 Mar 2020 01:47:59 +0800</pubDate>
+        
+        <guid>https://yangziran.com/posts/1584208079/</guid>
+        <description>Nature https://yangziran.com/posts/1584208079/ -&lt;h3 id=&#34;1卸载系统自带的mariadb-lib&#34;&gt;1、卸载系统自带的mariadb-lib&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# rpm -qa|grep mariadb
+// mariadb-libs-5.5.64-1.el7.x86_64
+# rpm -e mariadb-libs-5.5.64-1.el7.x86_64 —nodeps
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;2下载mysql-5728-rpm-bundletar包并解压&#34;&gt;2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;3安装&#34;&gt;3、安装&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;依次执行（几个包有依赖关系，需要按顺序）下面命令安装
+# rpm -ivh mysql-community-common-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-libs-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-client-5.7.28-1.el7.x86_64.rpm
+# rpm -ivh mysql-community-server-5.7.28-1.el7.x86_64.rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;4运行并添加开机启动&#34;&gt;4、运行并添加开机启动&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# systemctl enable mysqld // 添加开机启动
+# systemctl start mysqld // 启动MySQL服务
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;5登录并修改密码&#34;&gt;5、登录并修改密码&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;在上一步启动MySQL服务的时候，会初始化MySQL并为root用户生成默认密码并将该密码标记为过期，登录后需要设置一个新的密码。
+# cat /var/log/mysqld.log // 查看MySQL日志，搜索到：A temporary password is generated for root@localhost 后面就是生成的默认密码
+# mysql -uroot -p // 用root用户登录MySQL
+mysql&amp;gt; alter user ‘root’@‘localhost’ identified by ‘新密码’; // 密码要求：长度最少8位，大小写和特殊字符组成
+mysql&amp;gt; create user ‘新用户’ identified by ‘新密码’; // 创建远程登录用户
+mysql&amp;gt; grant all on *.* to 新用户; // 赋予新用户所有数据库的所有权限
+mysql&amp;gt; flush privileges; // 刷新系统权限表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;6防火墙配置远程访问&#34;&gt;6、防火墙配置远程访问&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;# firewall-cmd —permanent —zone=public —add-service=mysql // 永久开放mysql服务
+# firewall-cmd —reload // 重新加载防火墙
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;strong&gt;注意：新版的mysql数据库下的user表中已经没有password字段了，而是将加密后的用户密码存储于authentication_string字段。&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&#34;错误及解决方法&#34;&gt;错误及解决方法&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;error：Failed dependencies:
+    /usr/bin/perl is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    net-tools is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    perl(Getopt::Long) is needed by mysql-community-server-5.7.28-1.el7.x86_64
+    perl(strict) is needed by mysql-community-server-5.7.28-1.el7.x86_64
+
+解决方法：
+    # yum install perl
+    # yum install net-tools&lt;/code&gt;&lt;/pre&gt;
+- https://yangziran.com/posts/1584208079/ - </description>
+        </item>
     
     
   </channel>
