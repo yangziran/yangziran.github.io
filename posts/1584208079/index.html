@@ -306,16 +306,12 @@
 						
 							<ul>
 						
-							<ul>
-						
 						
 								<li>
 				 					<a href="#%e5%85%b3%e9%97%ad%e5%af%86%e7%a0%81%e5%bc%ba%e5%ba%a6%e5%ae%a1%e8%ae%a1" v-on:click="closeDrawer" id="关闭密码强度审计-nav">
 										 关闭密码强度审计：
 									</a>
 								</li>
-						
-							</ul>
 						
 							</ul>
 						
@@ -585,16 +581,12 @@
 						
 							<ul>
 						
-							<ul>
-						
 						
 								<li>
 				 					<a href="#%e5%85%b3%e9%97%ad%e5%af%86%e7%a0%81%e5%bc%ba%e5%ba%a6%e5%ae%a1%e8%ae%a1" v-on:click="closeDrawer" id="关闭密码强度审计-nav">
 										 关闭密码强度审计：
 									</a>
 								</li>
-						
-							</ul>
 						
 							</ul>
 						
@@ -736,7 +728,7 @@ mysql&gt; flush privileges; // 刷新系统权限表
 # firewall-cmd —reload // 重新加载防火墙
 </code></pre>
 <p><strong>注意：新版的mysql数据库下的user表中已经没有password字段了，而是将加密后的用户密码存储于authentication_string字段。</strong></p>
-<h4 id="关闭密码强度审计">关闭密码强度审计：</h4>
+<h3 id="关闭密码强度审计">关闭密码强度审计：</h3>
 <pre><code>方法一：
     mysql&gt; set global validate_password_policy=0 // 密码复杂度
     mysql&gt; set global validate_password_length=1 // 密码长度
