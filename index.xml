@@ -5,7 +5,7 @@
     <description>Recent content on Nature</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Sun, 15 Mar 2020 01:47:59 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 23 Mar 2020 21:13:19 +0800</lastBuildDate>
     
         <atom:link href="https://yangziran.com/index.xml" rel="self" type="application/rss+xml" />
     
@@ -69,6 +69,56 @@ mysql&amp;gt; flush privileges; // 刷新系统权限表
     # yum install perl
     # yum install net-tools&lt;/code&gt;&lt;/pre&gt;
 - https://yangziran.com/posts/1584208079/ - </description>
+        </item>
+    
+    
+    
+        <item>
+        <title>如何利用Github Pages和Hugo搭建个人博客？</title>
+        <link>https://yangziran.com/posts/1584969199/</link>
+        <pubDate>Mon, 23 Mar 2020 21:13:19 +0800</pubDate>
+        
+        <guid>https://yangziran.com/posts/1584969199/</guid>
+        <description>Nature https://yangziran.com/posts/1584969199/ -&lt;h3 id=&#34;github-pages-和-hugo-是什么&#34;&gt;Github Pages 和 Hugo 是什么？&lt;/h3&gt;
+&lt;p&gt;Github Pages 是一个静态站点托管服务，直接将个人、组织或项目的页面托管于Github仓库中。
+Hugo 是一个用Go语言编写的静态站点生成器，它针对速度、易用性和可配置性进行了优化，快速灵活。&lt;/p&gt;
+&lt;h3 id=&#34;还有其他选择吗&#34;&gt;还有其他选择吗？&lt;/h3&gt;
+&lt;p&gt;Jekyll、Hexo、Middleman等，这里不做过多说明。&lt;/p&gt;
+&lt;h3 id=&#34;接下来看看如何一步一步地位自己搭建一个博客&#34;&gt;接下来，看看如何一步一步地位自己搭建一个博客！&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;注：以下步骤以在MacOS上的操作为例，其他操作系统类似，只是一些工具和命令有区别。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;第1步新建一个github库&#34;&gt;第1步：新建一个Github库&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;1、注册一个Github账号。如果你已有账号，直接登录，如果你没有账号，注册并登录。
+2、打开Github Pages官网，浏览并了解User or organization site补发对应的操作步骤。
+Github Pages：[https://pages.github.com](https://pages.github.com)
+3、新建一个Github repository，库名为username.github.io，username即你的Github账号username。新建repository：[https://github.com/new](https://github.com/new)，作为博客内容发布仓库，权限需要为 public。
+4、创建另外一个Github repository，库名随便取，这里就以blog命名，作为博客源码管理仓库，权限可以为private。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;../../images/1584969199/WX20200325-163613@2x.png&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;注：一个账号只能有一个username.github.io仓库，我这里已经创建了就不能再创建。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;第2步安装hugo&#34;&gt;第2步：安装Hugo&lt;/h3&gt;
+&lt;h3 id=&#34;第3步新建一个hugo网站&#34;&gt;第3步：新建一个Hugo网站&lt;/h3&gt;
+&lt;h3 id=&#34;第4步选择并克隆主题&#34;&gt;第4步：选择并克隆主题&lt;/h3&gt;
+&lt;h3 id=&#34;第5步编辑配置文件&#34;&gt;第5步：编辑配置文件&lt;/h3&gt;
+&lt;h3 id=&#34;第6步新建一篇文章&#34;&gt;第6步：新建一篇文章&lt;/h3&gt;
+&lt;h3 id=&#34;第7步本地预览网站效果&#34;&gt;第7步：本地预览网站效果&lt;/h3&gt;
+&lt;h3 id=&#34;第8步构建hugo网站&#34;&gt;第8步：构建Hugo网站&lt;/h3&gt;
+&lt;h3 id=&#34;第9步将网站目录转换为git库&#34;&gt;第9步：将网站目录转换为Git库&lt;/h3&gt;
+&lt;h3 id=&#34;第10步关联远程库并推送代码&#34;&gt;第10步：关联远程库并推送代码&lt;/h3&gt;
+&lt;h4 id=&#34;之后如何添加一篇博客&#34;&gt;之后如何添加一篇博客&lt;/h4&gt;
+&lt;pre&gt;&lt;code&gt;1、新建一篇文章，编辑内容
+2、本地预览网站呈现效果
+3、构建Hugo网站
+4、提交修改至Git仓库并推送到Github
+&lt;/code&gt;&lt;/pre&gt;&lt;h4 id=&#34;参考&#34;&gt;参考：&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Git：&lt;a href=&#34;https://git-scm.com/book/zh/v2&#34;&gt;https://git-scm.com/book/zh/v2&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Github Pages：&lt;a href=&#34;https://help.github.com/cn/github/working-with-github-pages&#34;&gt;https://help.github.com/cn/github/working-with-github-pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hugo：&lt;a href=&#34;https://gohugo.io/documentation/&#34;&gt;https://gohugo.io/documentation/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+- https://yangziran.com/posts/1584969199/ - </description>
         </item>
     
     
