@@ -88,25 +88,130 @@ Hugo 是一个用Go语言编写的静态站点生成器，它针对速度、易�
 &lt;ul&gt;
 &lt;li&gt;注：以下步骤以在MacOS上的操作为例，其他操作系统类似，只是一些工具和命令有区别。&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h3 id=&#34;第0步安装gitgo并学习&#34;&gt;第0步：安装Git、Go并学习&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1、如果你的电脑里未安装Git，到 &lt;a href=&#34;https://git-scm.com&#34;&gt;这里&lt;/a&gt; 下载安装，并学习相关操作，后续博客的发布都需要用到。&lt;/li&gt;
+&lt;li&gt;2、到 &lt;a href=&#34;https://golang.org/dl&#34;&gt;这里&lt;/a&gt; 下载安装Go，只需要安装就可以。&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第1步新建一个github库&#34;&gt;第1步：新建一个Github库&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;1、注册一个Github账号。如果你已有账号，直接登录，如果你没有账号，注册并登录。
-2、打开Github Pages官网，浏览并了解User or organization site补发对应的操作步骤。
-Github Pages：[https://pages.github.com](https://pages.github.com)
-3、新建一个Github repository，库名为username.github.io，username即你的Github账号username。新建repository：[https://github.com/new](https://github.com/new)，作为博客内容发布仓库，权限需要为 public。
-4、创建另外一个Github repository，库名随便取，这里就以blog命名，作为博客源码管理仓库，权限可以为private。
-&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;&lt;img src=&#34;../../images/1584969199/WX20200325-163613@2x.png&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、注册一个Github账号。如果你已有账号，直接登录，如果你没有账号，注册并登录。&lt;/li&gt;
+&lt;li&gt;2、打开Github Pages官网，浏览并了解User or organization site补发对应的操作步骤。
+Github Pages：&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://pages.github.com&#34;&gt;https://pages.github.com&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/li&gt;
+&lt;li&gt;3、新建一个Github repository，库名为username.github.io，username即你的Github账号username。新建repository：&lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://github.com/new&#34;&gt;https://github.com/new&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;，作为博客内容发布仓库，权限需要为 public。&lt;/li&gt;
+&lt;li&gt;4、创建另外一个Github repository，库名随便取，这里就以blog命名，作为博客源码管理仓库，权限可以为private。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;../../images/1584969199/WX20200325-163613@2x.png&#34; alt=&#34;avatar&#34;&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;注：一个账号只能有一个username.github.io仓库，我这里已经创建了就不能再创建。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&#34;第2步安装hugo&#34;&gt;第2步：安装Hugo&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1、浏览Hugo官方的安装指南进行初步了解，安装与你的操作系统对应的必要工具。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Hugo安装指南：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;英文 &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://gohugo.io/getting-started/installing&#34;&gt;https://gohugo.io/getting-started/installing&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;中文 &lt;!-- raw HTML omitted --&gt;&lt;a href=&#34;https://www.gohugo.org/doc/overview/installing&#34;&gt;https://www.gohugo.org/doc/overview/installing&lt;/a&gt;&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;2、源码安装Hugo实例，源码方法适合所有平台&lt;/p&gt;
+&lt;p&gt;在安装 Hugo 之前，先配置好 Go 的环境变量以及代理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 配置环境变量
+export GOPATH=$HOME/go // 需要根据自己操作系统配置
+
+// 配置代理
+go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct // 参考：https://goproxy.cn
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;安装Hugo&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get -v github.com/gohugoio/hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;go get 将会获取 Hugo 以及所有依赖到你的 $GOPATH/src 目录，同时编译所有代码生成最终的 hugo （或 hugo.exe）二进制文件，这就全部准备好了&lt;/p&gt;
+&lt;p&gt;你可以使用 -u 参数执行 go get 来更新 Hugo 的所有依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get -u -v github.com/gohugoio/hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第3步新建一个hugo网站&#34;&gt;第3步：新建一个Hugo网站&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;1、进入你想存放 Hugo 网站的目录。&lt;/li&gt;
+&lt;li&gt;2、执行以下命令新建一个 Hugo 网站。
+&lt;pre&gt;&lt;code&gt;hugo new site yangziran.github.io // &#39;yangziran.github.io&#39; 是我网站文件夹名。
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;此时，会生成一个 yangziran.github.io 文件夹，&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第4步选择并克隆主题&#34;&gt;第4步：选择并克隆主题&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;默认的 Hugo 是不带任何主题的，你可以在官网上 &lt;a href=&#34;https://themes.gohugo.io&#34;&gt;下载&lt;/a&gt; 很多免费开源的主题，基本上所有的主题都会自带安装方法，并且每个主题的 config 配置文件基本是不一样的
+&lt;pre&gt;&lt;code&gt;git submodule add https://github.com/AmazingRise/hugo-theme-diary.git themes/diary
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;然后修改 config.toml 或 config.yaml 增加一行
+&lt;pre&gt;&lt;code&gt;theme = &amp;quot;diary&amp;quot; // diary 是我选择的主题文件夹的名称
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;然后使用 hugo server &amp;ndash;buildDrafts -w 即可访问 &lt;a href=&#34;http://localhost:1313/&#34;&gt;http://localhost:1313/&lt;/a&gt; 查看本地安装好的Hugo&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第5步编辑配置文件&#34;&gt;第5步：编辑配置文件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;baseURL 即为你博客的域名，如果有自己的域名并且打算使用其访问，就在这里填上准备好的域名并且到 Github 上的仓库 Settings 的 Custom domain 填上 baseURL 中的内容并保存，建议勾选上 Enforce HTTPS；如果没有自己的域名，那就填上 youname.github.io（仓库名称）&lt;/li&gt;
+&lt;li&gt;title 即为你博客的标题&lt;/li&gt;
+&lt;li&gt;其他配置请自行参考你所选择的主题配置&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第6步新建一篇文章&#34;&gt;第6步：新建一篇文章&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;发布文章或页面的命令为
+&lt;pre&gt;&lt;code&gt;hugo new posts/new-post.md
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;new-post 为文章或页面的名字，也可以采用时间戳命名: hugo new posts/$(date +%s).md&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;然后编辑 content/posts 目录下的 .md 文件，使用 Markdown 语法写文章&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第7步本地预览网站效果&#34;&gt;第7步：本地预览网站效果&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;本地预览网站的命令为&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hugo server --buildDrafts -w
+&lt;/code&gt;&lt;/pre&gt;&lt;blockquote&gt;
+&lt;p&gt;&amp;ndash;buildDrafts ：生成被标记为【草稿】的文档&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-w ：监控更改，如果发生更改直接显示到博客上&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第8步构建hugo网站&#34;&gt;第8步：构建Hugo网站&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在生成你的静态网页前，先将文章的 draft 改为 false&lt;/li&gt;
+&lt;li&gt;然后在 youname.github.io 目录下执行 hugo&lt;/li&gt;
+&lt;li&gt;此时所有生成的 HTML 文件都放在 youname.github.io/public 目录下&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第9步将网站目录转换为git库&#34;&gt;第9步：将网站目录转换为Git库&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;在这里会初始化 youname.github.io 和 public 两个 Git 仓库，并将 public 仓库添加为 youname.github.io 子模块
+&lt;pre&gt;&lt;code&gt;git init
+cd public
+git init
+git add .
+git commit -am &amp;quot;first commit&amp;quot;
+  
+cd ..
+git submodule add https://github.com/youname/youname.github.io.git
+git add .
+git commit -am &amp;quot;first commit&amp;quot;
+  
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h3 id=&#34;第10步关联远程库并推送代码&#34;&gt;第10步：关联远程库并推送代码&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;```
+git remote add origin https://github.com/youname/blog.git
+
+cd public
+git remote add origin https://github.com/youname/youname.github.io.git
+git push -u origin master
+
+cd ..
+git push -u origin master
+```
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id=&#34;之后如何添加一篇博客&#34;&gt;之后如何添加一篇博客&lt;/h4&gt;
 &lt;pre&gt;&lt;code&gt;1、新建一篇文章，编辑内容
 2、本地预览网站呈现效果

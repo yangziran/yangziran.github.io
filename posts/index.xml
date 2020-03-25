@@ -28,7 +28,10 @@
       <guid>https://yangziran.com/posts/1584969199/</guid>
       <description>Github Pages 和 Hugo 是什么？ Github Pages 是一个静态站点托管服务，直接将个人、组织或项目的页面托管于Github仓库中。 Hugo 是一个用Go语言编写的静态站点生成器，它针对速度、易用性和可配置性进行了优化，快速灵活。
 还有其他选择吗？ Jekyll、Hexo、Middleman等，这里不做过多说明。
-接下来，看看如何一步一步地位自己搭建一个博客！  注：以下步骤以在MacOS上的操作为例，其他操作系统类似，只是一些工具和命令有区别。  第1步：新建一个Github库 1、注册一个Github账号。如果你已有账号，直接登录，如果你没有账号，注册并登录。 2、打开Github Pages官网，浏览并了解User or organization site补发对应的操作步骤。 Github Pages：[https://pages.github.com](https://pages.github.com) 3、新建一个Github repository，库名为username.github.io，username即你的Github账号username。新建repository：[https://github.com/new](https://github.com/new)，作为博客内容发布仓库，权限需要为 public。 4、创建另外一个Github repository，库名随便取，这里就以blog命名，作为博客源码管理仓库，权限可以为private。  注：一个账号只能有一个username.github.io仓库，我这里已经创建了就不能再创建。  第2步：安装Hugo 第3步：新建一个Hugo网站 第4步：选择并克隆主题 第5步：编辑配置文件 第6步：新建一篇文章 第7步：本地预览网站效果 第8步：构建Hugo网站 第9步：将网站目录转换为Git库 第10步：关联远程库并推送代码 之后如何添加一篇博客 1、新建一篇文章，编辑内容 2、本地预览网站呈现效果 3、构建Hugo网站 4、提交修改至Git仓库并推送到Github 参考：  Git：https://git-scm.com/book/zh/v2 Github Pages：https://help.github.com/cn/github/working-with-github-pages Hugo：https://gohugo.io/documentation/  </description>
+接下来，看看如何一步一步地位自己搭建一个博客！  注：以下步骤以在MacOS上的操作为例，其他操作系统类似，只是一些工具和命令有区别。  第0步：安装Git、Go并学习  1、如果你的电脑里未安装Git，到 这里 下载安装，并学习相关操作，后续博客的发布都需要用到。 2、到 这里 下载安装Go，只需要安装就可以。  第1步：新建一个Github库  1、注册一个Github账号。如果你已有账号，直接登录，如果你没有账号，注册并登录。 2、打开Github Pages官网，浏览并了解User or organization site补发对应的操作步骤。 Github Pages：https://pages.github.com 3、新建一个Github repository，库名为username.github.io，username即你的Github账号username。新建repository：https://github.com/new，作为博客内容发布仓库，权限需要为 public。 4、创建另外一个Github repository，库名随便取，这里就以blog命名，作为博客源码管理仓库，权限可以为private。   注：一个账号只能有一个username.github.io仓库，我这里已经创建了就不能再创建。  第2步：安装Hugo  1、浏览Hugo官方的安装指南进行初步了解，安装与你的操作系统对应的必要工具。  Hugo安装指南：
+ 英文 https://gohugo.io/getting-started/installing  中文 https://www.gohugo.org/doc/overview/installing   2、源码安装Hugo实例，源码方法适合所有平台
+在安装 Hugo 之前，先配置好 Go 的环境变量以及代理：
+// 配置环境变量 export GOPATH=$HOME/go // 需要根据自己操作系统配置 // 配置代理 go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.</description>
     </item>
     
   </channel>
