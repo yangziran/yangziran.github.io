@@ -12,23 +12,14 @@
     
     
     <item>
-      <title>CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar</title>
-      <link>https://yangziran.com/posts/1584208079/</link>
-      <pubDate>Sun, 15 Mar 2020 01:47:59 +0800</pubDate>
-      
-      <guid>https://yangziran.com/posts/1584208079/</guid>
-      <description>1、卸载系统自带的mariadb-lib # rpm -qa|grep mariadb // mariadb-libs-5.5.64-1.el7.x86_64 # rpm -e mariadb-libs-5.5.64-1.el7.x86_64 —nodeps  2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压 # tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar  3、安装 依次执行（几个包有依赖关系，需要按顺序）下面命令安装 # rpm -ivh mysql-community-common-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-libs-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-client-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-server-5.7.28-1.el7.x86_64.rpm  4、运行并添加开机启动 # systemctl enable mysqld // 添加开机启动 # systemctl start mysqld // 启动MySQL服务  5、登录并修改密码 在上一步启动MySQL服务的时候，会初始化MySQL并为root用户生成默认密码并将该密码标记为过期，登录后需要设置一个新的密码。 # cat /var/log/mysqld.log // 查看MySQL日志，搜索到：A temporary password is generated for root@localhost 后面就是生成的默认密码 # mysql -uroot -p // 用root用户登录MySQL mysql&amp;gt; alter user ‘root’@‘localhost’ identified by ‘新密码’; // 密码要求：长度最少8位，大小写和特殊字符组成 mysql&amp;gt; create user ‘新用户’ identified by ‘新密码’; // 创建远程登录用户 mysql&amp;gt; grant all on *.</description>
-    </item>
-    
-    <item>
       <title>运维常说的 5个9、4个9、3个9 的可靠性，到底是什么？</title>
       <link>https://yangziran.com/posts/1585456431/</link>
       <pubDate>Sun, 29 Mar 2020 12:33:59 +0800</pubDate>
       
       <guid>https://yangziran.com/posts/1585456431/</guid>
       <description>在系统的高可用性（也称为可用性，英文描述为HA，High Available）里有个衡量其可靠性的标准—X个9，这个X是代表数字 3~5。X个9表示在系统1年时间的使用过程中，系统可以正常使用时间与总时间（1年）之比，我们通过下面的计算来感受X个9在不同级别的可靠性差异。
- 3个9：(1-99.9%)36524=8.76小时，表示该系统在连续运行1年时间里最多可能的业务中断时间是8.76小时。 4个9：(1-99.99%)36524=0.876小时=52.6分钟，表示该系统在连续运行1时间里最多可能的业务中断时间是52.6分钟。 5个9：(1-99.999%)36524*60=5.26分钟，表示该系统在连续运行1年时间里最多可能的业务中断时间是5.26分钟。  那么X个9里面的X只代表数字3~5，为什么没有1~2，也没有大于5的呢？接着往下计算：
- 1个9：(1-90%)*365=36.5天 2个9：(1-99%)*365=3.65天 6个9：(1-99.9999%)365246060=31秒  可以看到1个9和2个9分别表示1年内业务可能中断的时间是36.5天、3.65天，这种级别的可靠性或许还达不到高可靠性；而6个9则表示1年内业务中断时间最多是31秒，这个级别的可靠性并非实现不了，而是要做到从5个9到6个9的可靠性提升要付出成本太高。
+ 3个9：(1-99.9%)*365*24=8.76小时，表示该系统在连续运行1年时间里最多可能的业务中断时间是8.76小时。 4个9：(1-99.99%)*365*24=0.876小时=52.6分钟，表示该系统在连续运行1时间里最多可能的业务中断时间是52.6分钟。 5个9：(1-99.999%)*365*24*60=5.26分钟，表示该系统在连续运行1年时间里最多可能的业务中断时间是5.26分钟。  那么X个9里面的X只代表数字3~5，为什么没有1~2，也没有大于5的呢？接着往下计算：
+ 1个9：(1-90%)*365=36.5天 2个9：(1-99%)*365=3.65天 6个9：(1-99.9999%)*365*24*60*60=31秒  可以看到1个9和2个9分别表示1年内业务可能中断的时间是36.5天、3.65天，这种级别的可靠性或许还达不到高可靠性；而6个9则表示1年内业务中断时间最多是31秒，这个级别的可靠性并非实现不了，而是要做到从5个9到6个9的可靠性提升要付出成本太高。
    可靠性 级别 年停机时间（分钟）     99.9% 3个9 500   99.99% 4个9 50   99.999% 5个9 5   99.9999% 6个9 0.5    补充：
   【MTBF】即平均故障间隔时间，英文全称是：Mean Time Between Failure。是衡量一个产品的可靠性指标，单位为：小时。具体来说，是指相邻两次故障之间的平均工作时间，也称为平均故障间隔。概括的说，产品故障少的就是可靠性高，产品的故障总数与寿命单位总数之比叫：故障率（Failure rate）。
   【失效率】是指工作到某一时刻尚未失效的产品，在该时刻后单位时间内发生失效的概率。一般记为：λ，它也是时间t的函数，故也记为：λ(t)，称为失效率函数，有时也称为故障率函数或风险函数。 失效率 λ=1/MTBF，单位1FITs=10-9(1/h)
@@ -49,6 +40,15 @@
  英文 https://gohugo.io/getting-started/installing  中文 https://www.gohugo.org/doc/overview/installing   2、源码安装Hugo实例，源码方法适合所有平台
 在安装 Hugo 之前，先配置好 Go 的环境变量以及代理：
 // 配置环境变量 export GOPATH=$HOME/go // 需要根据自己操作系统配置 // 配置代理 go env -w GO111MODULE=on go env -w GOPROXY=https://goproxy.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar</title>
+      <link>https://yangziran.com/posts/1584208079/</link>
+      <pubDate>Sun, 15 Mar 2020 01:47:59 +0800</pubDate>
+      
+      <guid>https://yangziran.com/posts/1584208079/</guid>
+      <description>1、卸载系统自带的mariadb-lib # rpm -qa|grep mariadb // mariadb-libs-5.5.64-1.el7.x86_64 # rpm -e mariadb-libs-5.5.64-1.el7.x86_64 —nodeps  2、下载mysql 5.7.28-*.rpm-bundle.tar包并解压 # tar -xvf mysql-5.7.28-1.el7.x86_64.rpm-bundle.tar  3、安装 依次执行（几个包有依赖关系，需要按顺序）下面命令安装 # rpm -ivh mysql-community-common-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-libs-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-client-5.7.28-1.el7.x86_64.rpm # rpm -ivh mysql-community-server-5.7.28-1.el7.x86_64.rpm  4、运行并添加开机启动 # systemctl enable mysqld // 添加开机启动 # systemctl start mysqld // 启动MySQL服务  5、登录并修改密码 在上一步启动MySQL服务的时候，会初始化MySQL并为root用户生成默认密码并将该密码标记为过期，登录后需要设置一个新的密码。 # cat /var/log/mysqld.log // 查看MySQL日志，搜索到：A temporary password is generated for root@localhost 后面就是生成的默认密码 # mysql -uroot -p // 用root用户登录MySQL mysql&amp;gt; alter user ‘root’@‘localhost’ identified by ‘新密码’; // 密码要求：长度最少8位，大小写和特殊字符组成 mysql&amp;gt; create user ‘新用户’ identified by ‘新密码’; // 创建远程登录用户 mysql&amp;gt; grant all on *.</description>
     </item>
     
   </channel>
