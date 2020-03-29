@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-<title>Posts</title>
+<title>运维常说的 5个9、4个9、3个9 的可靠性，到底是什么？</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -29,9 +29,29 @@
 <script src="https://yangziran.com//js/table.js"></script>
 
 
+<script src="https://yangziran.com//js/toc.js"></script>
+
 
 <script>
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/vendor/js/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'your client id',
+  clientSecret: 'your client secret',
+  repo: 'repo name',
+  owner: 'user',
+  admin: ['user'],
+  id: md5(location.pathname),
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
 </script>
 
 
@@ -103,14 +123,17 @@
     
 </div><div ref="extraContainer" class="extra-container">
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
         </a>
-        
-        
         
     </div>
 </div><div class="single-column-drawer-container" ref="drawer"
@@ -150,6 +173,11 @@
                     </a>
             
             
+            <div class="toc">
+
+
+</div>
+            
         </div>
     </div>
 </div>
@@ -180,79 +208,133 @@
             <div id="content">
 <div ref="streamContainer" class="stream-container">
     <div class="post-list-container post-list-container-shadow">
-        
-            <a class="a-block">
-                <div class="post-item-wrapper post-item-wrapper-no-hover">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title post-item-title-small year">
-                                2020
-                            </div>
-                        </div>
+        <div class="post">
+            
+            
+            
+
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('/')">
+                
+                <img src="https://yangziran.com/" style="display: none;"></img>
+                <div class="post-title">
+                    运维常说的 5个9、4个9、3个9 的可靠性，到底是什么？
+                    <div class="post-meta">
+                        
+                        <time itemprop="datePublished">
+                            2020-03-29 12:33
+                        </time>
+                        
+
+                        
+
+                        
                     </div>
                 </div>
-            </a>
+            </div>
             
-            <a href="/posts/1585456431/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                运维常说的 5个9、4个9、3个9 的可靠性，到底是什么？
-                            </div>
-                            <div class="post-item-meta">
-                                Mar 29, 2020
-    
-                                
-                            </div>
-                        </div>
-                    </div>
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <p>在系统的高可用性（也称为可用性，英文描述为HA，High Available）里有个衡量其可靠性的标准—X个9，这个X是代表数字 3~5。X个9表示在系统1年时间的使用过程中，系统可以正常使用时间与总时间（1年）之比，我们通过下面的计算来感受X个9在不同级别的可靠性差异。</p>
+<ul>
+<li>3个9：(1-99.9%)<em>365</em>24=8.76小时，表示该系统在连续运行1年时间里最多可能的业务中断时间是8.76小时。</li>
+<li>4个9：(1-99.99%)<em>365</em>24=0.876小时=52.6分钟，表示该系统在连续运行1时间里最多可能的业务中断时间是52.6分钟。</li>
+<li>5个9：(1-99.999%)<em>365</em>24*60=5.26分钟，表示该系统在连续运行1年时间里最多可能的业务中断时间是5.26分钟。</li>
+</ul>
+<p>那么X个9里面的X只代表数字3~5，为什么没有1~2，也没有大于5的呢？接着往下计算：</p>
+<ul>
+<li>1个9：(1-90%)*365=36.5天</li>
+<li>2个9：(1-99%)*365=3.65天</li>
+<li>6个9：(1-99.9999%)<em>365</em>24<em>60</em>60=31秒</li>
+</ul>
+<p>可以看到1个9和2个9分别表示1年内业务可能中断的时间是36.5天、3.65天，这种级别的可靠性或许还达不到高可靠性；而6个9则表示1年内业务中断时间最多是31秒，这个级别的可靠性并非实现不了，而是要做到从5个9到6个9的可靠性提升要付出成本太高。</p>
+<table>
+<thead>
+<tr>
+<th>可靠性</th>
+<th>级别</th>
+<th>年停机时间（分钟）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>99.9%</td>
+<td>3个9</td>
+<td>500</td>
+</tr>
+<tr>
+<td>99.99%</td>
+<td>4个9</td>
+<td>50</td>
+</tr>
+<tr>
+<td>99.999%</td>
+<td>5个9</td>
+<td>5</td>
+</tr>
+<tr>
+<td>99.9999%</td>
+<td>6个9</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+<p>补充：</p>
+<ul>
+<li>
+<p>【MTBF】即平均故障间隔时间，英文全称是：Mean Time Between Failure。是衡量一个产品的可靠性指标，单位为：小时。具体来说，是指相邻两次故障之间的平均工作时间，也称为平均故障间隔。概括的说，产品故障少的就是可靠性高，产品的故障总数与寿命单位总数之比叫：故障率（Failure rate）。</p>
+</li>
+<li>
+<p>【失效率】是指工作到某一时刻尚未失效的产品，在该时刻后单位时间内发生失效的概率。一般记为：λ，它也是时间t的函数，故也记为：λ(t)，称为失效率函数，有时也称为故障率函数或风险函数。
+失效率 λ=1/MTBF，单位1FITs=10-9(1/h)</p>
+</li>
+<li>
+<p>【MTTR】即平均修复时间，英文全称是：Mean Time To Repair。是指可修复产品的平均修复时间，就是从出现故障到修复中间的这段时间。MTTR越短表示易恢复性越好。</p>
+</li>
+<li>
+<p>【修复率】表示为：μ，英文全称是：Repair Rate，产品维修性的一种基本参数。修理时间已达到某个时刻但尚未修复的产品，在该时刻后的单位时间内完成修复的概率。</p>
+</li>
+</ul>
+<p>￼<img src="../../images/1585456431/1337307870.jpg" alt="avatar"></p>
+
+                    
+                    <HR width="100%" id="EOF">
+                    <p style="color:#777;">Last modified on 2020-03-29</p>
+                    
                 </div>
-            </a>
+            </div>
             
-            <a href="/posts/1584969199/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                如何利用Github Pages和Hugo搭建个人博客？
-                            </div>
-                            <div class="post-item-meta">
-                                Mar 23, 2020
-    
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
             
-            <a href="/posts/1584208079/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-gaps">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar
-                            </div>
-                            <div class="post-item-meta">
-                                Mar 15, 2020
-    
-                                
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-            
-        
-    </div>
-</div>
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts" href="https://yangziran.com/posts/1584208079/">
+                    Next<br>CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://yangziran.com/posts/1584969199/">
+                    Previous<br>如何利用Github Pages和Hugo搭建个人博客？
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+<div id="gitalk-container"></div>
+
+
+
 
 
             </div>
+        </div>
+    </div>
+</div>
 
-
-<div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+            </div><div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
 <script>
 	var createYear = 2020;
 	var now = new Date();
