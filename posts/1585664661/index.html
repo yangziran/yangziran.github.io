@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html><head>
-	<meta name="generator" content="Hugo 0.68.3" />
-<title>Nature</title>
+<title>MySQL 5.7.28 主从复制-gtid</title>
 
 <meta charset="utf-8">
 <meta name="X-UA-Compatible" content="IE=edge">
@@ -30,9 +29,29 @@
 <script src="https://yangziran.com//js/table.js"></script>
 
 
+<script src="https://yangziran.com//js/toc.js"></script>
+
 
 <script>
     loadCSS("https://fonts.googleapis.com/css?family=Lora|Montserrat|Fira+Mono|Noto+Serif+SC|Material+Icons");
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="/vendor/js/md5.min.js"></script>
+<script>
+  var gitalk = new Gitalk({
+  clientID: 'your client id',
+  clientSecret: 'your client secret',
+  repo: 'repo name',
+  owner: 'user',
+  admin: ['user'],
+  id: md5(location.pathname),
+  distractionFreeMode: 'false'
+  });
+  window.onload = function () {
+        gitalk.render('gitalk-container')
+  }
 </script>
 
 
@@ -43,7 +62,7 @@
 </head><body>
     	<div id="app"><div ref="sideContainer" class="side-container">
     
-    <a class="a-block nav-head active" href="https://yangziran.com/">
+    <a class="a-block nav-head false" href="https://yangziran.com/">
     
         <div class="nav-title">
             Nature
@@ -57,7 +76,9 @@
             
                 
                 
-                <a class="a-block nav-link-item false" href="/posts">
+                    
+                
+                <a class="a-block nav-link-item active" href="/posts">
                     Archive
                 </a>
         
@@ -102,14 +123,17 @@
     
 </div><div ref="extraContainer" class="extra-container">
     
+    <div class="toc animated-visibility" :class="{ invisible: scrollY <= 140 }">
+
+
+</div>
+    
     <div class="pagination">
         <a id="globalBackToTop" class="pagination-action animated-visibility" href="#top" :class="{ invisible: scrollY == 0 }">
             <i class="material-icons pagination-action-icon">
                 keyboard_arrow_up
             </i>
         </a>
-        
-        
         
     </div>
 </div><div class="single-column-drawer-container" ref="drawer"
@@ -121,7 +145,9 @@
                 
                     
                     
-                    <a class="a-block drawer-menu-item false" href="/posts">
+                        
+                    
+                    <a class="a-block drawer-menu-item active" href="/posts">
                         Archive
                     </a>
             
@@ -146,6 +172,11 @@
                         Favorites
                     </a>
             
+            
+            <div class="toc">
+
+
+</div>
             
         </div>
     </div>
@@ -175,123 +206,91 @@
     </a>
 </div>
             <div id="content">
-
 <div ref="streamContainer" class="stream-container">
-    <div class="post-list-container post-list-container-no-background">
-        
+    <div class="post-list-container post-list-container-shadow">
+        <div class="post">
             
-            <a href="https://yangziran.com/posts/1585664661/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                MySQL 5.7.28 主从复制-gtid
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-                                2020-03-31
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
             
-        
             
-            <a href="https://yangziran.com/posts/1585664478/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                MySQL 5.7.28 主从复制-binlog
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-                                2020-03-31
-                            </div>
-                        </div>
+
+            <div class="post-head-wrapper-text-only"
+                 style="background-image: url('/')">
+                
+                <img src="https://yangziran.com/" style="display: none;"></img>
+                <div class="post-title">
+                    MySQL 5.7.28 主从复制-gtid
+                    <div class="post-meta">
                         
+                        <time itemprop="datePublished">
+                            2020-03-31 22:24
+                        </time>
+                        
+
+                        
+
                         
                     </div>
                 </div>
+            </div>
             
-        
-            
-            <a href="https://yangziran.com/posts/1585456431/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                运维常说的 5个9、4个9、3个9 的可靠性，到底是什么？
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-                                2020-03-29
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
+            <div class="post-body-wrapper">
+                <div class="post-body">
+                    <p>MySQL 5.6开始引入了GTID的概念，那么GTID是何方神圣？其实就是一个全局事务标识符。使用GTID时，每次事务提交都会在binlog里生成一个唯一的标识符，它由UUID和事务ID组成。首次提交的事务ID为1，第二次为2，第三次为3，以此类推。UUID是服务器的身份ID，在第一次启动MySQL时，会自动生成一个server_uuid，并且默认写入到数据库下的auto.cnf文件里。无需修改，也不建议修改。</p>
+<p>基于GTID的主从复杂好处：</p>
+<ul>
+<li>1、在传统的复制里面，当发生故障需要主从切换，需要找到binlog和pos点，然后change master to 指向新的master，相对来说比较麻烦，也容易出错。在MySQL 5.6里面，不用再找binlog和pos点，只需要知道master的ip、port以及账号密码就行，因为复制是自动的，MySQL会通过内部机制GTID自动找点同步。</li>
+<li>2、多线程复制（基于库）。在MySQL 5.6以前的版本，slave的复制是单线程的，而master是并发写入的，所以延时是避免不了的。唯一有效的方法是吧多个库放在多台slave，这样又浪费服务器。在MySQL 5.6里面，我们可以把多个表放在多个库，这样就可以使用多线程复制，当只有1个库，多线程复制是没有用的。</li>
+</ul>
+<p>GTID相关特性默认是关闭的，使用：show variables like ‘%gtid%’; 查看。GTID不支持MyISAM表（GTID是基于食物的），对CREATE TABLE ….. SELECT 语句不支持。</p>
+<p>基于GTID的主从复制配置如下（master和slave一样，不需要server-id，其他步骤与传统复制一致）：</p>
+<ul>
+<li>gtid-mode=ON</li>
+<li>enforce-grid-consistency=ON</li>
+<li>log-bin=mysql-bin</li>
+</ul>
+<p>多线程复制由参数 slave-paralles-workers 控制，设定从服务器的SQL线程数，0表示关闭多线程复制，默认为0，最大考验设置为1024个线程。在从库的配置文件[mysqld]段落添加。</p>
+<p>参考官方文档：
+<a href="https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-howto.html">https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-howto.html</a></p>
+<p><a href="https://mariadb.com/kb/en/setting-up-replication/">https://mariadb.com/kb/en/setting-up-replication/</a></p>
+
+                    
+                    <HR width="100%" id="EOF">
+                    <p style="color:#777;">Last modified on 2020-03-31</p>
+                    
                 </div>
+            </div>
             
-        
             
-            <a href="https://yangziran.com/posts/1584969199/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                如何利用Github Pages和Hugo搭建个人博客？
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-                                2020-03-23
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            
-        
-            
-            <a href="https://yangziran.com/posts/1584208079/" class="a-block">
-                <div class="post-item-wrapper">
-                    <div class="post-item post-item-no-divider">
-                        <div class="post-item-info-wrapper">
-                            <div class="post-item-title">
-                                CentOS 7.7.1908 安装 MySQL 5.7.28-*.rpm-bundle.tar
-                            </div>
-                            <div class="post-item-summary">
-                                
-                            </div>
-                            <div class="post-item-meta">
-                                2020-03-15
-                            </div>
-                        </div>
-                        
-                        
-                    </div>
-                </div>
-            
-        
-        </a>
+            <nav class="post-pagination">
+
+                
+                <a class="newer-posts">
+                    Next<br>No newer posts.
+                </a>
+                
+                
+                
+                <a class="older-posts" href="https://yangziran.com/posts/1585664478/">
+                    Previous<br>MySQL 5.7.28 主从复制-binlog
+                </a>
+                
+            </nav>
+            <div class="post-comment-wrapper">
+                
+
+
+<div id="gitalk-container"></div>
+
+
+
+
+
+            </div>
+        </div>
     </div>
 </div>
 
-            </div>
-
-
-<div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
+            </div><div id="single-column-footer">&copy; <span id="dates"></span> <a href="https://kunter.cn" target="_blank">Kunter</a> All Rights Reserved.
 <script>
 	var createYear = 2020;
 	var now = new Date();

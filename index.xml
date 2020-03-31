@@ -5,9 +5,37 @@
     <description>Recent content on Nature</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-cn</language>
-    <lastBuildDate>Tue, 31 Mar 2020 22:21:18 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 31 Mar 2020 22:24:21 +0800</lastBuildDate>
     
         <atom:link href="https://yangziran.com/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    
+        <item>
+        <title>MySQL 5.7.28 主从复制-gtid</title>
+        <link>https://yangziran.com/posts/1585664661/</link>
+        <pubDate>Tue, 31 Mar 2020 22:24:21 +0800</pubDate>
+        
+        <guid>https://yangziran.com/posts/1585664661/</guid>
+        <description>Nature https://yangziran.com/posts/1585664661/ -&lt;p&gt;MySQL 5.6开始引入了GTID的概念，那么GTID是何方神圣？其实就是一个全局事务标识符。使用GTID时，每次事务提交都会在binlog里生成一个唯一的标识符，它由UUID和事务ID组成。首次提交的事务ID为1，第二次为2，第三次为3，以此类推。UUID是服务器的身份ID，在第一次启动MySQL时，会自动生成一个server_uuid，并且默认写入到数据库下的auto.cnf文件里。无需修改，也不建议修改。&lt;/p&gt;
+&lt;p&gt;基于GTID的主从复杂好处：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1、在传统的复制里面，当发生故障需要主从切换，需要找到binlog和pos点，然后change master to 指向新的master，相对来说比较麻烦，也容易出错。在MySQL 5.6里面，不用再找binlog和pos点，只需要知道master的ip、port以及账号密码就行，因为复制是自动的，MySQL会通过内部机制GTID自动找点同步。&lt;/li&gt;
+&lt;li&gt;2、多线程复制（基于库）。在MySQL 5.6以前的版本，slave的复制是单线程的，而master是并发写入的，所以延时是避免不了的。唯一有效的方法是吧多个库放在多台slave，这样又浪费服务器。在MySQL 5.6里面，我们可以把多个表放在多个库，这样就可以使用多线程复制，当只有1个库，多线程复制是没有用的。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GTID相关特性默认是关闭的，使用：show variables like ‘%gtid%’; 查看。GTID不支持MyISAM表（GTID是基于食物的），对CREATE TABLE ….. SELECT 语句不支持。&lt;/p&gt;
+&lt;p&gt;基于GTID的主从复制配置如下（master和slave一样，不需要server-id，其他步骤与传统复制一致）：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gtid-mode=ON&lt;/li&gt;
+&lt;li&gt;enforce-grid-consistency=ON&lt;/li&gt;
+&lt;li&gt;log-bin=mysql-bin&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;多线程复制由参数 slave-paralles-workers 控制，设定从服务器的SQL线程数，0表示关闭多线程复制，默认为0，最大考验设置为1024个线程。在从库的配置文件[mysqld]段落添加。&lt;/p&gt;
+&lt;p&gt;参考官方文档：
+&lt;a href=&#34;https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-howto.html&#34;&gt;https://dev.mysql.com/doc/refman/5.7/en/replication-gtids-howto.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://mariadb.com/kb/en/setting-up-replication/&#34;&gt;https://mariadb.com/kb/en/setting-up-replication/&lt;/a&gt;&lt;/p&gt;
+- https://yangziran.com/posts/1585664661/ - </description>
+        </item>
     
     
     
