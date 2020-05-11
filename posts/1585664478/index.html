@@ -647,7 +647,7 @@ mysql&gt; flush privileges;
 </code></pre>
 <h3 id="2配置数据库">2、配置数据库</h3>
 <pre><code>在my.cnf文件中的[mysqld]下面添加：
-    bin-log=mysql-bin
+    log-bin=mysql-bin
     server-id=1
 说明：在修改my.cnf之前先停止mysqld服务。bin-log需要两台机值一致，server-id不能一样。两台数据库配置完并重启才能进行下一步。
 </code></pre>
