@@ -3,17 +3,47 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://yangziran.com/posts/1585664661/</loc>
-    <lastmod>2020-03-31T22:24:21+08:00</lastmod>
+    <loc>https://yangziran.com/categories/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://yangziran.com/</loc>
-    <lastmod>2020-03-31T22:24:21+08:00</lastmod>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://yangziran.com/posts/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/tags/sharding-jdbc/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/posts/1590998525/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/tags/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
+    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/tags/mysql/</loc>
+    <lastmod>2020-03-31T22:24:21+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://yangziran.com/posts/1585664661/</loc>
     <lastmod>2020-03-31T22:24:21+08:00</lastmod>
   </url>
   
@@ -33,27 +63,7 @@
   </url>
   
   <url>
-    <loc>https://yangziran.com/categories/</loc>
-    <lastmod>2020-03-15T01:47:59+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://yangziran.com/posts/1584208079/</loc>
-    <lastmod>2020-03-15T01:47:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/tags/mysql/</loc>
-    <lastmod>2020-03-15T01:47:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/categories/mysql/</loc>
-    <lastmod>2020-03-15T01:47:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/tags/</loc>
     <lastmod>2020-03-15T01:47:59+08:00</lastmod>
   </url>
   
