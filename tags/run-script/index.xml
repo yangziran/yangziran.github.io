@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>run script on Nature</title>
+    <link>https://yangziran.com/tags/run-script/</link>
+    <description>Recent content in run script on Nature</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-cn</language>
+    <lastBuildDate>Sat, 06 Jun 2020 23:03:33 +0800</lastBuildDate>
+    
+	<atom:link href="https://yangziran.com/tags/run-script/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Java8 启动脚本</title>
+      <link>https://yangziran.com/posts/1591455813/</link>
+      <pubDate>Sat, 06 Jun 2020 23:03:33 +0800</pubDate>
+      
+      <guid>https://yangziran.com/posts/1591455813/</guid>
+      <description>#!/bin/bash #-------------------------------------------- # Java程序启动脚本，启动Jar或者基于SpringBoot的War包 # 基于Java8 HotSpot，Linux|MacOS系统 # 使用方式：sh xxx.sh [ start|stop|restart|status ] # 配置APP_NAME、WORK_DIR、GC_LOGS之后运行脚本即可 # Author Yang ZiRan # Email	mail@yangziran.com # Site https://yangziran.com #-------------------------------------------- # Jar|War文件名称 APP_NAME=&amp;#34;&amp;#34; # Jar|War工作路径 WORK_DIR=&amp;#34;&amp;#34; # JVM日志路径 GC_LOGS=&amp;#34;/var/logs&amp;#34; # 进程停止等待时间，秒 SHUTDOWN_WAIT=10 # 启用核心转储，并限制文件大小为1024K，如需不限制文件大小，则使用：ulimit -c unlimited ulimit -c 1024 # 模式选项 MODE_OPTS=&amp;#34;-server&amp;#34; # 内存选项 MEM_OPTS=&amp;#34;-Xmx4G -Xms4G -XX:MetaspaceSize=512M -XX:MaxMetaspaceSize=512M&amp;#34; # 启动时预申请内存 MEM_OPTS=&amp;#34;$MEM_OPTS-XX:+AlwaysPreTouch&amp;#34; # GC选项 GC_OPTS=&amp;#34;-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled&amp;#34; GCLOG_OPTS=&amp;#34;-Xloggc:${GC_LOGS}/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintCommandLineFlags&amp;#34; # OOM选项 OOM_OPTS=&amp;#34;-XX:HeapDumpPath=${GC_LOGS}-verbose:class -XX:+HeapDumpOnOutOfMemoryError&amp;#34; # CRASH选项 CRASH_OPTS=&amp;#34;-XX:ErrorFile=${GC_LOGS}/hs_err_pid%p.</description>
+    </item>
+    
+  </channel>
+</rss>
