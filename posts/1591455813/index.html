@@ -260,7 +260,7 @@
 APP_NAME<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
 <span style="color:#75715e"># Jar|War工作路径</span>
 WORK_DIR<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;&#34;</span>
-<span style="color:#75715e"># JVM日志路径</span>
+<span style="color:#75715e"># GC日志路径</span>
 GC_LOGS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/var/logs&#34;</span>
 <span style="color:#75715e"># 进程停止等待时间，秒</span>
 SHUTDOWN_WAIT<span style="color:#f92672">=</span><span style="color:#ae81ff">10</span>
@@ -278,7 +278,7 @@ MEM_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</s
 GC_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled&#34;</span>
 GCLOG_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-Xloggc:</span><span style="color:#e6db74">${</span>GC_LOGS<span style="color:#e6db74">}</span><span style="color:#e6db74">/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintCommandLineFlags&#34;</span>
 <span style="color:#75715e"># OOM选项</span>
-OOM_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-XX:HeapDumpPath=</span><span style="color:#e6db74">${</span>GC_LOGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -verbose:class -XX:+HeapDumpOnOutOfMemoryError&#34;</span>
+OOM_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-verbose:class -XX:HeapDumpPath=</span><span style="color:#e6db74">${</span>GC_LOGS<span style="color:#e6db74">}</span><span style="color:#e6db74"> -XX:+HeapDumpOnOutOfMemoryError&#34;</span>
 <span style="color:#75715e"># CRASH选项</span>
 CRASH_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-XX:ErrorFile=</span><span style="color:#e6db74">${</span>GC_LOGS<span style="color:#e6db74">}</span><span style="color:#e6db74">/hs_err_pid%p.log&#34;</span>
 <span style="color:#75715e"># JMX选项</span>
@@ -288,7 +288,6 @@ OTHER_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;-
 
 <span style="color:#75715e"># JVM启动参数</span>
 JAVA_OPTS<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;</span>$MODE_OPTS<span style="color:#e6db74"> </span>$MEM_OPTS<span style="color:#e6db74"> </span>$GC_OPTS<span style="color:#e6db74"> </span>$GCLOG_OPTS<span style="color:#e6db74"> </span>$OOM_OPTS<span style="color:#e6db74"> </span>$CRASH_OPTS<span style="color:#e6db74"> </span>$OTHER_OPTS<span style="color:#e6db74">&#34;</span>
-
 
 <span style="color:#75715e"># 使用说明，用来提示输入参数</span>
 usage<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
@@ -314,6 +313,7 @@ start<span style="color:#f92672">()</span> <span style="color:#f92672">{</span>
 		echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> is already running. Pid is </span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 	<span style="color:#66d9ef">else</span>
 		nohup java $JAVA_OPTS -jar $WORK_DIR/APP_NAME &gt; /dev/null 2&gt;&amp;<span style="color:#ae81ff">1</span> &amp;
+		checkpid
 		echo <span style="color:#e6db74">&#34;</span><span style="color:#e6db74">${</span>APP_NAME<span style="color:#e6db74">}</span><span style="color:#e6db74"> started. Pid is </span><span style="color:#e6db74">${</span>pid<span style="color:#e6db74">}</span><span style="color:#e6db74">&#34;</span>
 	<span style="color:#66d9ef">fi</span> 
 <span style="color:#f92672">}</span>

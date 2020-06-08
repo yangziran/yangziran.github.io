@@ -32,7 +32,7 @@
 APP_NAME&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# Jar|War工作路径&lt;/span&gt;
 WORK_DIR&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
-&lt;span style=&#34;color:#75715e&#34;&gt;# JVM日志路径&lt;/span&gt;
+&lt;span style=&#34;color:#75715e&#34;&gt;# GC日志路径&lt;/span&gt;
 GC_LOGS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;/var/logs&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# 进程停止等待时间，秒&lt;/span&gt;
 SHUTDOWN_WAIT&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;10&lt;/span&gt;
@@ -50,7 +50,7 @@ MEM_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&
 GC_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-XX:+UseG1GC -XX:MaxGCPauseMillis=100 -XX:+ParallelRefProcEnabled&amp;#34;&lt;/span&gt;
 GCLOG_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-Xloggc:&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;GC_LOGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/gc.log -XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintCommandLineFlags&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# OOM选项&lt;/span&gt;
-OOM_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-XX:HeapDumpPath=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;GC_LOGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -verbose:class -XX:+HeapDumpOnOutOfMemoryError&amp;#34;&lt;/span&gt;
+OOM_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-verbose:class -XX:HeapDumpPath=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;GC_LOGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; -XX:+HeapDumpOnOutOfMemoryError&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# CRASH选项&lt;/span&gt;
 CRASH_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;-XX:ErrorFile=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;GC_LOGS&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;/hs_err_pid%p.log&amp;#34;&lt;/span&gt;
 &lt;span style=&#34;color:#75715e&#34;&gt;# JMX选项&lt;/span&gt;
@@ -60,7 +60,6 @@ OTHER_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# JVM启动参数&lt;/span&gt;
 JAVA_OPTS&lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;$MODE_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$MEM_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$GC_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$GCLOG_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$OOM_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$CRASH_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt; &lt;/span&gt;$OTHER_OPTS&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
-
 
 &lt;span style=&#34;color:#75715e&#34;&gt;# 使用说明，用来提示输入参数&lt;/span&gt;
 usage&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;{&lt;/span&gt;
@@ -86,6 +85,7 @@ start&lt;span style=&#34;color:#f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#
 		echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APP_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; is already running. Pid is &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;pid&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
 	&lt;span style=&#34;color:#66d9ef&#34;&gt;else&lt;/span&gt;
 		nohup java $JAVA_OPTS -jar $WORK_DIR/APP_NAME &amp;gt; /dev/null 2&amp;gt;&amp;amp;&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt; &amp;amp;
+		checkpid
 		echo &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;APP_NAME&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt; started. Pid is &lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;${&lt;/span&gt;pid&lt;span style=&#34;color:#e6db74&#34;&gt;}&lt;/span&gt;&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&lt;/span&gt;
 	&lt;span style=&#34;color:#66d9ef&#34;&gt;fi&lt;/span&gt; 
 &lt;span style=&#34;color:#f92672&#34;&gt;}&lt;/span&gt;
