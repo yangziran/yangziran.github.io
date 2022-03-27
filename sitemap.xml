@@ -1,85 +1,15 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
-  
-  <url>
-    <loc>https://yangziran.com/categories/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/categories/java/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1591455813/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/tags/run-script/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
-  </url>
-  
   <url>
     <loc>https://yangziran.com/tags/</loc>
-    <lastmod>2020-06-06T23:03:33+08:00</lastmod>
+  </url><url>
+    <loc>https://yangziran.com/series/</loc>
+  </url><url>
+    <loc>https://yangziran.com/categories/</loc>
+  </url><url>
+    <loc>https://yangziran.com/archives/</loc>
+  </url><url>
+    <loc>https://yangziran.com/</loc>
   </url>
-  
-  <url>
-    <loc>https://yangziran.com/tags/sharding-jdbc/</loc>
-    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1590998525/</loc>
-    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
-    <lastmod>2020-06-01T16:02:06+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/tags/mysql/</loc>
-    <lastmod>2020-03-31T22:24:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1585664661/</loc>
-    <lastmod>2020-03-31T22:24:21+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1585664478/</loc>
-    <lastmod>2020-03-31T22:21:18+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1585456431/</loc>
-    <lastmod>2020-03-29T12:33:59+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1584969199/</loc>
-    <lastmod>2020-03-23T21:13:19+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://yangziran.com/posts/1584208079/</loc>
-    <lastmod>2020-03-15T01:47:59+08:00</lastmod>
-  </url>
-  
 </urlset>
